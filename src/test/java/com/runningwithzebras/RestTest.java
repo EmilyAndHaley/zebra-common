@@ -47,6 +47,10 @@ public class RestTest {
 	@Test
 	public void testZebraRest() {
 		ZebraApiConsumer consumer = new ZebraApiConsumer();
+		
+		int numResults=20;
+		
+		consumer.setNumResults(numResults);
 
 		InputStream stream;
 		try {
@@ -57,7 +61,8 @@ public class RestTest {
 			ArrayList<Zebra> zebraList = listParser.ObjectFromDOM(stream);
 
 			System.out.println("zebra size: " + zebraList.size());
-
+			assertEquals(zebraList.size(), numResults);
+			
 			for (Zebra zebra : zebraList) {
 				System.out.println("zeb: " + zebra.getDisplayTitle());
 			}
