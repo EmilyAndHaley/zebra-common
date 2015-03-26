@@ -23,6 +23,10 @@ public class RestTest {
 	@Test
 	public void testRest() {
 		ZebraApiConsumer consumer = new ZebraApiConsumer();
+		int numResults = 10;
+
+		consumer.setNumResults(numResults);
+		consumer.addSymptom("Cough");
 
 		InputStream stream;
 		try {
@@ -47,10 +51,12 @@ public class RestTest {
 	@Test
 	public void testZebraRest() {
 		ZebraApiConsumer consumer = new ZebraApiConsumer();
-		
-		int numResults=20;
-		
+
+		int numResults = 20;
+
 		consumer.setNumResults(numResults);
+		consumer.addSymptom("Cough");
+		consumer.addSymptom("Seizure");
 
 		InputStream stream;
 		try {
@@ -62,7 +68,7 @@ public class RestTest {
 
 			System.out.println("zebra size: " + zebraList.size());
 			assertEquals(zebraList.size(), numResults);
-			
+
 			for (Zebra zebra : zebraList) {
 				System.out.println("zeb: " + zebra.getDisplayTitle());
 			}
