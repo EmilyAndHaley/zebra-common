@@ -1,10 +1,5 @@
 package com.runningwithzebras.rest;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 
 public class ZebraApiConsumer extends AbstractRestApiConsumer {
@@ -19,16 +14,9 @@ public class ZebraApiConsumer extends AbstractRestApiConsumer {
 		this.baseAPI = "http://findzebra.compute.dtu.dk/api/call/xml/query?";
 	}
 
-	public InputStream getInputStream() throws MalformedURLException,
-			IOException {
-
-		String urlString = String.format("%sq=%s&score=%s&fl=%s&rows=%d",
+	String createURL() {
+		return String.format("%sq=%s&score=%s&fl=%s&rows=%d",
 				baseAPI, makeSymptomString(), strScore, strFL, numResults);
-		urlString = urlString.replace(" ", "%20");
-
-		URL url = new URL(urlString);
-		URLConnection connection = url.openConnection();
-		return connection.getInputStream();
 	}
 
 	public void setNumResults(int numResults) {
