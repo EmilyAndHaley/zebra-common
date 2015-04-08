@@ -73,6 +73,8 @@ public class RestTest {
 				System.out.println("zeb: " + zebra.getDisplayTitle());
 			}
 
+			assertEquals(numResults, zebraList.size());
+
 		} catch (Exception ex) {
 			System.out.println("Exception!! " + ex);
 			assert (false);
