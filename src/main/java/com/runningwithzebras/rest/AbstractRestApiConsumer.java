@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 
 public abstract class AbstractRestApiConsumer implements RestApiConsumer {
 	String baseAPI;
@@ -18,6 +19,8 @@ public abstract class AbstractRestApiConsumer implements RestApiConsumer {
 
 		String urlString= createURL();
 		urlString = urlString.replace(" ", "%20");
+		
+		URLEncoder.encode(urlString, "UTF-8");
 
 		URL url = new URL(urlString);
 		URLConnection connection = url.openConnection();
