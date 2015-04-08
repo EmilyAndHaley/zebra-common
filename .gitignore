@@ -2,3 +2,7 @@
 /.project
 /.settings/
 /target/
+/.idea
+zebra-common.iml
+/out
+/web
